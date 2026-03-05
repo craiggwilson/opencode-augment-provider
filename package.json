@@ -1,0 +1,52 @@
+{
+  "name": "opencode-augment-provider",
+  "version": "0.1.0",
+  "description": "OpenCode provider implementation using Augment AI SDK",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "biome check ./src",
+    "clean": "rm -rf dist",
+    "dev": "tsc --watch",
+    "format": "biome format --write ./src",
+    "lint": "biome lint ./src"
+  },
+  "keywords": [
+    "opencode",
+    "augment",
+    "ai",
+    "llm",
+    "provider"
+  ],
+  "author": "Craig Wilson",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@ai-sdk/provider": "^2.0.0",
+    "@augmentcode/auggie-sdk": "^0.1.15"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
+}
