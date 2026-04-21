@@ -34,13 +34,13 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@ai-sdk/provider": "^2.0.0",
+    "@ai-sdk/provider": "^3.0.8",
     "@augmentcode/auggie-sdk": "^0.1.15"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.0",
-    "@types/node": "^20.0.0",
-    "typescript": "^5.3.0"
+    "@biomejs/biome": "^2.4.12",
+    "@types/node": "^25.6.0",
+    "typescript": "^6.0.3"
   },
   "files": [
     "dist",
