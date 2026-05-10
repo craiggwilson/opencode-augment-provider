@@ -49,27 +49,42 @@ in
 
     models = lib.mkOption {
       type = lib.types.attrsOf modelType;
-      defaultText = lib.literalExpression "known Augment Code models with context and output limits";
+      default = { };
+      defaultText = lib.literalExpression "{ }";
       description = ''
-        Models to register under the augment provider in OpenCode. The default
-        set covers all models currently available through Augment Code. Override
-        to add new models, change limits, or remove entries.
+        Models to register under the augment provider in OpenCode's settings.
+
+        When empty (the default), no provider block is written and the plugin
+        discovers the model list from Augment's get-models API at runtime. Set
+        this only when you want to bypass runtime discovery and manage the model
+        list explicitly.
       '';
     };
   };
 
   config = lib.mkIf cfg.enable {
-    # Writes the complete augment provider block into OpenCode's settings.
-    # Enabling this module is the single place to configure the provider:
-    # npm path, display name, and all models are set here together.
-    #
-    # NOTE: remove any existing programs.opencode.settings.provider.augment
-    # definitions from your nix-config before enabling this module to avoid
-    # NixOS module system conflicts on the same option key.
-    programs.opencode.settings.provider.augment = {
-      name = "Augment Code";
-      npm = "file://${cfg.package}/lib/opencode-augment-provider";
-      models = cfg.models;
-    };
+    programs.opencode.settings = lib.mkMerge [
+      # Always register the plugin so it can inject npm, logging, and runtime
+      # model discovery.
+      {
+        plugin = [
+          "file:///home/craig/Projects/hdwlinux/opencode-augment-provider"
+        ];
+      }
+
+      # Only write the provider block when the user has explicitly configured
+      # models. When models is empty the plugin discovers them at runtime, so no
+      # static provider block is needed.
+      #
+      # NOTE: if you do set models here, remove any existing
+      # programs.opencode.settings.provider.augment definitions from your
+      # nix-config to avoid NixOS module system conflicts on the same key.
+      (lib.mkIf (cfg.models != { }) {
+        provider.augment = {
+          name = "Augment Code";
+          models = cfg.models;
+        };
+      })
+    ];
   };
 }

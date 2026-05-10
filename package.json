@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "dist": "bun build src/index.ts --outdir dist --target node --bundle",
     "check": "biome check ./src",
     "clean": "rm -rf dist",
     "dev": "tsc --watch",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@ai-sdk/provider": "^3.0.8",
-    "@augmentcode/auggie-sdk": "^0.1.15"
+    "@opencode-ai/plugin": "^1.2.15"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",

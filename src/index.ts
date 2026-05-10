@@ -4,5 +4,5 @@
  * @packageDocumentation
  */
 
-export type { AugmentProviderOptions } from "./augment-model.js";
+export type { AugmentProviderOptions, Logger } from "./augment-model.js";
 export { createAugment } from "./augment-model.js";

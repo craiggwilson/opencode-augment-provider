@@ -63,10 +63,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1774807042,
-        "narHash": "sha256-0WnVPXWru2ap3nHrPNlAyIj0DAcQSdlt3MITLEP2v60=",
-        "rev": "178daeffbf6f33f49e8f88b90783fbaa0491e2cd",
-        "revCount": 3,
+        "lastModified": 1778864879,
+        "narHash": "sha256-e5xUM9MyFfp+zXK73EI4hhdiO6Z/HypIEAeaXkDcDEQ=",
+        "rev": "7b07338739d03888caf26efd1a6d8620a852a08a",
+        "revCount": 4,
         "type": "git",
         "url": "file:///home/craig/Projects/hdwlinux/substrate"
       },
