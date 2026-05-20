@@ -252,6 +252,7 @@ async function createPlugin(input: PluginInput): Promise<Hooks> {
       if (!config.provider) config.provider = {};
       if (!config.provider.augment) config.provider.augment = {};
       if (!config.provider.augment.npm) config.provider.augment.npm = PACKAGE_ROOT;
+      if (!config.provider.augment.name) config.provider.augment.name = "Augment Code";
       if (!config.provider.augment.options) config.provider.augment.options = {};
       if (!config.provider.augment.options.logger) config.provider.augment.options.logger = logger;
 
